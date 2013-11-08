@@ -19,7 +19,7 @@ development:
   encoding: unicode
   database: tissues_development
   pool: 5
-  username: DUFF
+  username: DUFFa
   password:
 
   # Connect on a TCP socket. Omitted by default since the client uses a
