@@ -1,1 +1,2 @@
 --color
+rspec --require rspec/pride --format RSpec::Pride
