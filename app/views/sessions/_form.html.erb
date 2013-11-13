@@ -1,5 +1,5 @@
 <h1>Sign in</h1>
-<%= form_for :signin, method: "POST" do |f| %>
+<%= form_for :signin, method: "POST",:url => { :action => :create } do |f| %>
 <p>
 <%= f.label :name %><br />
 <%= f.text_field :name %>
