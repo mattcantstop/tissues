@@ -12,5 +12,4 @@ feature "User signup" do
 
     expect(page).to have_content("You have signed up successfully.")
   end
-
 end
