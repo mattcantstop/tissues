@@ -6,16 +6,14 @@ feature "Viewing tickets" do
                                     name: "TextMate 2")
     user = FactoryGirl.create(:user)
     ticket = FactoryGirl.create(:ticket,
-                                 project: textmate_2,
-                                 title: "Make it shiny!",
-                                 description: "Gradients! Starbursts! Oh my!")
+        project: textmate_2,
+        title: "Make it shiny!",
+        description: "Gradients, Starbursts! Oh my!")
     ticket.update(user: user)
-    ticket.user = user
-    ticket.save
 
     internet_explorer = FactoryGirl.create(:project, name: "Internet Explorer.")
 
-    FactoryGirl.create(:ticket, 
+    FactoryGirl.create(:ticket,
                        project: internet_explorer,
                        title: "Standards compliance",
                        description: "Isn't a joke!")
