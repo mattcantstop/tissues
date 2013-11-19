@@ -7,19 +7,19 @@ describe ProjectsController do
     before do
       sign_in(user)
     end
-  end
 
-  it "cannot access the new action" do
-    get :new
+    it "cannot access the new action" do
+      get :new
 
-    expect(response).to redirect_to('/')
-    expect(flash[:alert]).to eql("You must be an admin to do that.")
-  end
+      expect(response).to redirect_to('/')
+      expect(flash[:alert]).to eql("You must be an admin to do that.")
+    end
 
-  it "displays an error for a missing project" do
-    get :show, id: "not-here"
-    expect(response).to redirect_to(projects_path)
-    message = "The project you were looking for can not be found."
-    expect(flash[:alert]).to eql(message)
+    it "displays an error for a missing project" do
+      get :show, id: "not-here"
+      expect(response).to redirect_to(projects_path)
+      message = "The project you were looking for can not be found."
+      expect(flash[:alert]).to eql(message)
+    end
   end
 end
