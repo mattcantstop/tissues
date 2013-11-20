@@ -1,5 +1,6 @@
 feature "Editing Projects" do
   before do
+    sign_in_as!(FactoryGirl.create(:admin_user))
     FactoryGirl.create(:project, name: "TextMate 2")
     visit "/"
     click_link "TextMate 2"
