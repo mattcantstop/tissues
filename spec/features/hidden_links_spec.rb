@@ -40,6 +40,14 @@ feature "hidden links" do
   end
 
   context "admin users" do
+  def authorize_admin!
+    require_signin!
+
+    unless current_user.admin?
+      flash[:alert] = "You must be an admin to do that."
+      redirect_to root_path
+    end
+  end
     before { sign_in_as!(admin_user) }
     scenario "can see the New Project link" do
       sign_in_as!(admin_user)
