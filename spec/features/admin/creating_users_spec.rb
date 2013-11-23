@@ -4,7 +4,7 @@ feature "Creating Users" do
   let!(:admin_user) { FactoryGirl.create(:admin_user) }
 
   before do
-    sign_in_as(admin_user)
+    sign_in_as!(admin_user)
     visit '/'
     click_link "Admin"
     click_link "Users"

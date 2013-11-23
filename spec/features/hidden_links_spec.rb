@@ -51,7 +51,6 @@ feature "hidden links" do
     before { sign_in_as!(admin_user) }
     scenario "can see the New Project link" do
       sign_in_as!(admin_user)
-      puts admin_user.inspect
       visit '/'
       assert_link_for "New Project"
     end
