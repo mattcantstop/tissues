@@ -3,7 +3,7 @@ FactoryGirl.define do
     name "#{Random.rand(1..1000)} Last"
     password "password"
     password_confirmation "password"
-    email "sample@example.com"
+    email "admin@example.com"
     admin true
   end
 end
