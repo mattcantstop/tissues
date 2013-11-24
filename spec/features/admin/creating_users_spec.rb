@@ -12,7 +12,7 @@ feature "Creating Users" do
   end
 
   scenario "Creating a new user" do
-    fill_in "Email", with: "newbie@example.com"
+    fill_in "Email", with: "#{Random.rand(1..1000)}@example.com"
     fill_in "Password", with: "password"
     click_button "Create User"
     expect(page).to have_content("User has been created.")

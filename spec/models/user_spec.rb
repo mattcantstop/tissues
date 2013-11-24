@@ -14,7 +14,7 @@ describe User do
 
   describe "passwords" do
     it "needs a password and confirmation to save" do
-      u = User.new(name: "steve")
+      u = User.new(name: "steve", email: "matt@example.com")
       u.save
       expect(u).to_not be_valid
 

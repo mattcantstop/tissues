@@ -4,8 +4,10 @@
      <h2><%= pluralize(@user.errors.count, "error") %>
        prohibited this user from being saved:</h2>
      <ul>
-     <% @ticket.errors.full_messages.each do |msg| %>
-       <li><%= msg %></li>
+     <% if @ticket %>
+       <% @ticket.errors.full_messages.each do |msg| %>
+         <li><%= msg %></li>
+       <% end %>
      <% end %>
      </ul>
    </div>
