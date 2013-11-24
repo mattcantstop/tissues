@@ -10,9 +10,17 @@ describe ProjectsController do
     get :show, id: "not-here"
 
     expect(response).to redirect_to(projects_path)
-    message = "The project you were looking for can not be found."
+    message = "The project you were looking for could not be found."
 
     expect(flash[:alert]).to eql(message)
+  end
+
+  it "cannot access the show action without permission" do
+    project = FactoryGirl.create(:project)
+    get :show, id: project.id
+
+    expect(response).to redirect_to(projects_path)
+    expect(flash[:alert]).to eql("The project you were looking for could not be found.")
   end
 
   context "standard users" do

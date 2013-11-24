@@ -4,20 +4,9 @@ feature "Creating Tickets" do
   before do
     project = FactoryGirl.create(:project)
     user = FactoryGirl.create(:user)
+    define_permission!(user, "view", project)
     @email = user.email
-
-    visit '/'
-    click_link project.name
-    click_link "New Ticket"
-    message = "You need to sign in or sign up before continuing."
-    expect(page).to have_content(message)
-
-    fill_in "Name", with: user.name
-    fill_in "Password", with: user.password
-    click_button "Sign In"
-
-    click_link project.name
-    click_link "New Ticket"
+    sign_in_as!(user)
   end
 
   scenario "Creating a Ticket" do
