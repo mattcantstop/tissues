@@ -7,6 +7,10 @@ feature "Creating Tickets" do
     define_permission!(user, "view", project)
     @email = user.email
     sign_in_as!(user)
+
+    visit '/'
+    click_link project.name
+    click_link "New Ticket"
   end
 
   scenario "Creating a Ticket" do
