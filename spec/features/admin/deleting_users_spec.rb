@@ -11,7 +11,7 @@ feature "deleting users" do
     click_link "Admin"
     click_link "Users"
   end
-  
+
   scenario "deleting a user" do
     click_link user.email
     click_link "Delete User"
@@ -19,4 +19,9 @@ feature "deleting users" do
     expect(page).to have_content("User has been deleted.")
   end
 
+  scenario "Users cannot delete themselves" do
+    click_link admin_user.email
+    click_link "Delete User"
+    expect(page).to have_content("You cannot delete yourself!")
+  end
 end
