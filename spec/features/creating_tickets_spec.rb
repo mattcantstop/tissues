@@ -15,7 +15,6 @@ feature "Creating Tickets" do
   end
 
   scenario "Creating a Ticket" do
-
     fill_in "Title", with: "Non-standards compliance"
     fill_in "Description", with: "My pages are ugly!"
     click_button "Create Ticket"
