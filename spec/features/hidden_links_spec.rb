@@ -37,22 +37,43 @@ feature "hidden links" do
       visit project_path(project)
       assert_no_link_for "Delete Project"
     end 
+
+    scenario "New ticket link is shown to a user with permission" do
+      define_permission!(user, "view", project)
+      define_permission!(user, "create tickets", project)
+      visit project_path(project)
+      assert_link_for "New Ticket"
+    end
+
+    scenario "New ticket link is hidden from a user without permission" do
+      define_permission!(user, "view", project)
+      visit project_path(project)
+      assert_no_link_for "New Ticket"
+    end
+
   end
 
   context "admin users" do
-  def authorize_admin!
-    require_signin!
+    def authorize_admin!
+      require_signin!
 
-    unless current_user.admin?
-      flash[:alert] = "You must be an admin to do that."
-      redirect_to root_path
+      unless current_user.admin?
+        flash[:alert] = "You must be an admin to do that."
+        redirect_to root_path
+      end
     end
-  end
+
     before { sign_in_as!(admin_user) }
+
     scenario "can see the New Project link" do
       sign_in_as!(admin_user)
       visit '/'
       assert_link_for "New Project"
+    end
+
+    scenario "New ticket link is shown to admins" do
+      visit project_path(project)
+      assert_link_for "New Ticket"
     end
   end
 end

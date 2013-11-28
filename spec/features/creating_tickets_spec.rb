@@ -5,12 +5,16 @@ feature "Creating Tickets" do
     project = FactoryGirl.create(:project)
     user = FactoryGirl.create(:user)
     define_permission!(user, "view", project)
+    define_permission!(user, "create tickets", project)
     @email = user.email
     sign_in_as!(user)
+
+    visit '/'
+    click_link project.name
+    click_link "New Ticket"
   end
 
   scenario "Creating a Ticket" do
-
     fill_in "Title", with: "Non-standards compliance"
     fill_in "Description", with: "My pages are ugly!"
     click_button "Create Ticket"
