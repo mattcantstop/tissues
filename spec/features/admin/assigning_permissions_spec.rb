@@ -8,16 +8,16 @@ feature "Assigning permissions" do
 
   before do
     sign_in_as!(admin)
-    
+
     click_link "Admin"
     click_link "Users"
-    click_link "user.email"
+    click_link user.email
     click_link "Permissions"
   end
 
   scenario "Viewing a project" do
     check_permission_box "view", project
-    
+
     click_button "Update"
     click_button "Sign Out"
 
