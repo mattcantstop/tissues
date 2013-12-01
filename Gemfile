@@ -2,6 +2,9 @@ source 'https://rubygems.org'
 
   gem 'cancan', '~> 1.6.10'
 
+  gem 'carrierwave', '0.8.0'
+
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
