@@ -19,7 +19,7 @@ feature "Assigning permissions" do
     check_permission_box "view", project
 
     click_button "Update"
-    click_button "Sign Out"
+    click_link "Sign out"
 
     sign_in_as!(user)
     expect(page).to have_content(project.name)

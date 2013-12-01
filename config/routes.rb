@@ -15,6 +15,7 @@ Tissues::Application.routes.draw do
   post "/signin", to: "sessions#create"
   get "sessions/new"
   get "/signin", to: "sessions#new"
+  delete "/signout", to: "sessions#destroy", as: "signout"
 
   resources :projects do
     resources :tickets
