@@ -13,10 +13,13 @@
 
   <%= f.text_field :title, placeholder: "Title" %>
   <%= f.text_area :description, placeholder: "Description", rows: 5 %>
-  <p>
-    <%= f.label :asset, "File" %><br>
-    <%= f.file_field :asset %>
-  </p>
+  <% number = 0 %>
+  <%= f.fields_for :assets do |asset| %>
+    <p>
+      <%= asset.label :asset, "File ##{number += 1}" %>
+      <%= asset.file_field :asset %>
+    </p>
+  <% end %>
   <%= f.submit %>
 <% end %>
 

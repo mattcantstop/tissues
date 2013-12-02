@@ -7,17 +7,13 @@ class Ticket < ActiveRecord::Base
   validates :description, length: { minimum: 10 }
 
   ###
-  # CarrierWave Support
-  ###
-
-  mount_uploader :asset, AssetUploader
-
-  ###
   # Associations
   ###
 
   belongs_to :project
   belongs_to :user
+  has_many :assets
+  accepts_nested_attributes_for :assets
 
 
 end
