@@ -36,7 +36,7 @@ class TicketsController < ApplicationController
       redirect_to [@project,@ticket]
     else
       flash[:notice] = "Ticket has not been updated."
-      redirect_to 'edit'
+      render_action :edit
     end
   end
 
