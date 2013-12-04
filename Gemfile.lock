@@ -39,6 +39,8 @@ GEM
     carrierwave (0.8.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
+    childprocess (0.3.9)
+      ffi (~> 1.0, >= 1.0.11)
     coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -55,6 +57,7 @@ GEM
     factory_girl_rails (4.2.1)
       factory_girl (~> 4.2.0)
       railties (>= 3.0.0)
+    ffi (1.9.3)
     hike (1.2.3)
     i18n (0.6.5)
     jbuilder (1.5.2)
@@ -119,6 +122,7 @@ GEM
       rspec-mocks (~> 2.14.0)
     ruby_parser (3.2.2)
       sexp_processor (~> 4.1)
+    rubyzip (1.0.0)
     sass (3.2.12)
     sass-rails (4.0.1)
       railties (>= 4.0.0, < 5.0)
@@ -127,6 +131,11 @@ GEM
     sdoc (0.3.20)
       json (>= 1.1.3)
       rdoc (~> 3.10)
+    selenium-webdriver (2.37.0)
+      childprocess (>= 0.2.5)
+      multi_json (~> 1.0)
+      rubyzip (~> 1.0.0)
+      websocket (~> 1.0.4)
     sexp_processor (4.3.0)
     slop (2.1.0)
     sprockets (2.10.0)
@@ -151,6 +160,7 @@ GEM
     uglifier (2.3.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    websocket (1.0.7)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -173,5 +183,6 @@ DEPENDENCIES
   rspec-rails (~> 2.14)
   sass-rails (~> 4.0.0)
   sdoc
+  selenium-webdriver
   turbolinks
   uglifier (>= 1.3.0)

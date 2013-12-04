@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
   gem 'cancan', '~> 1.6.10'
-
   gem 'carrierwave', '0.8.0'
 
 
@@ -46,6 +45,7 @@ group :test do
   gem 'capybara', "2.1.0"
   gem 'factory_girl_rails', '~> 4.2.1'
   gem "rspec-pride", "~> 2.2.0"
+  gem 'selenium-webdriver'
 end
 
 # Use ActiveModel has_secure_password
