@@ -3,7 +3,6 @@ source 'https://rubygems.org'
   gem 'cancan', '~> 1.6.10'
   gem 'carrierwave', '0.8.0'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
@@ -39,13 +38,14 @@ end
 group :test, :development do
   gem 'rspec-rails', "~> 2.14"
   gem 'pry'
+  gem 'selenium-webdriver'
+  gem 'database_cleaner', '1.0.1'
 end
 
 group :test do
   gem 'capybara', "2.1.0"
   gem 'factory_girl_rails', '~> 4.2.1'
   gem "rspec-pride", "~> 2.2.0"
-  gem 'selenium-webdriver'
 end
 
 # Use ActiveModel has_secure_password
