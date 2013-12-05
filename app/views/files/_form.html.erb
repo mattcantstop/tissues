@@ -1,0 +1,29 @@
+<%= form_for [@project, @ticket], html: { multipart: true } do |f| %>
+  <% if @ticket.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ticket.errors.count, "error") %>
+        prohibited this ticket from being saved:</h2>
+      <ul>
+        <% @ticket.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+   <% end %>
+
+  <%= f.text_field :title, placeholder: "Title" %>
+  <%= f.text_area :description, placeholder: "Description", rows: 5 %>
+  <% number = 0 %>
+  <div id="files">
+    <%= f.fields_for :assets, :child_index => number do |asset| %>
+      <p>
+        <%= asset.label :asset, "File ##{number += 1}" %>
+        <%= asset.file_field :asset %>
+      </p>
+    <% end %>
+  </div>
+  <%= link_to "Add another file", new_file_path, :remote => true,
+                                                 :update => "files",
+                                                 :position => "after" %>
+  <%= f.submit %>
+<% end %>
