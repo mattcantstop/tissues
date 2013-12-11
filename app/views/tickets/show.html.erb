@@ -25,4 +25,13 @@
     data: { confirm: "Are you sure you want to delete this ticket?"} %>
   <% end %>
 </div>
+
+<div id='comments'>
+  <% if @ticket.comments.exists? %>
+    <%= render @ticket.comments.select(&:persisted?) %>
+  <% else %>
+    There are no comments for this ticket.
+  <% end %>
+</div>
+
 <%= render "comments/form" %>
