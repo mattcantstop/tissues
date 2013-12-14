@@ -17,7 +17,6 @@ feature "adding comments" do
     click_link ticket.title
     fill_in "Text", with: "Added a comment!"
     click_button "Create Comment"
-binding.pry
     page.should have_content("Comment has been created!")
     within("#comments") do
       page.should have_content("Added a comment!")
