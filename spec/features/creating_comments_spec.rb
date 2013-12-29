@@ -16,7 +16,7 @@ feature "Creating comments" do
     click_link ticket.title
     fill_in "Text", :with => "Added a comment!"
     click_button "Create Comment"
-    page.should have_content("Comment has been created.")
+    page.should have_content("Comment has been created")
     within("#comments") do
       page.should have_content("Added a comment!")
     end
@@ -25,7 +25,7 @@ feature "Creating comments" do
   scenario "Creating an invalid comment" do
     click_link ticket.title
     click_button "Create Comment"
-    page.should have_content("Comment has not been created.")
+    page.should have_content("Comment has not been created")
     page.should have_content("Text can't be blank")
   end
 
