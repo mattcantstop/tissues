@@ -4,10 +4,11 @@ feature "Creating comments" do
   let!(:user) { FactoryGirl.create(:user) }
   let!(:project) { FactoryGirl.create(:project) }
   let!(:ticket) { FactoryGirl.create(:ticket, :project => project, :user => user) }
+  let!(:state) { FactoryGirl.create(:state, :name => "Open") }
 
   before do
     define_permission!(user, "view", project)
-    Factory(:state, :name => "Open")
+    state
     sign_in_as!(user)
     visit '/'
     click_link project.name
