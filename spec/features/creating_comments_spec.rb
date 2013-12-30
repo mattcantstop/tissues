@@ -30,6 +30,7 @@ feature "Creating comments" do
   end
 
   scenario "Changing a ticket's state" do
+    click_link ticket.title
     fill_in "Text", :with => "This is a real issue"
     select "Open", :from => "State"
     click_button "Create Comment"
