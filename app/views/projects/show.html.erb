@@ -9,6 +9,10 @@
   <%= link_to "New Ticket", new_project_ticket_path(@project) %>
 <% end %>
 
+<div>
+<%= @project.name %>
+</div>
+
 <ul id='tickets'>
   <% @tickets.each do |ticket| %>
     <li>

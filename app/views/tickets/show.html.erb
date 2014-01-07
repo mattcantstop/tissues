@@ -28,6 +28,9 @@
 
 <div id='comments'>
   <% if @ticket.comments.exists? %>
+    <% @ticket.comments.each do |comment| %>
+      <%= comment.text %>
+    <% end %>
     <%= render @ticket.comments.select(&:persisted?) %>
   <% else %>
     There are no comments for this ticket.
