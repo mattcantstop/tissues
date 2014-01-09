@@ -7,9 +7,13 @@ class Comment < ActiveRecord::Base
   belongs_to :state
 
   validates :text, :presence => true
+  delegate :project, :to => :ticket
+
+  private
 
   def set_ticket_state
-
+    self.ticket.state = self.state
+    self.ticket.save!
   end
 
 end
