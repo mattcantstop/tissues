@@ -1,4 +1,10 @@
-<%= div_for(@comments) do |comment| %>
-  <h4><%= comment.user %></h4>
-  <%= simple_format(comment.text) %>
-<% end %>
+<div id='comments'>
+  <% if @ticket.comments.exists? %>
+    <% @ticket.comments.each do |comment| %>
+      <%= comment.user %><br>
+      <%= comment.text %>
+    <% end %>
+  <% else %>
+    There are no comments for this ticket.
+  <% end %>
+</div>
