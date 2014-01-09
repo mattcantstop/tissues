@@ -15,6 +15,7 @@
     </div>
   <% end %>
   <span id='author'>Created by <%= @ticket.user.email %></span>
+  <%= render @ticket.state if @ticket.state %>
 
   <%= authorized?("edit tickets", @project) do %>
     <%= link_to "Edit Ticket", [:edit, @project, @ticket] %>
