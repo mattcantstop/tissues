@@ -1,15 +1,15 @@
-<div id='comments'>
-  <% if @ticket.comments.exists? %>
-    <% @ticket.comments.each do |comment| %>
-      <div class='commment user'>
-        Submitted By: <%= comment.user %>
-      </div>
-      <div class='comment state_chain'>
-        State: <%= comment.previous_state %> &rarr; <%= comment.state.name %>
-      </div>
-      <%= comment.text %>
+  <div id='comments'>
+    <% if @ticket.comments.exists? %>
+      <% @ticket.comments.each do |comment| %>
+        <div class='commment user'>
+          Submitted By: <%= comment.user %>
+        </div>
+        State: <%= state_for(comment) %>
+        <div>
+          <%= comment.text %>
+        </div>
+      <% end %>
+    <% else %>
+     There are no comments for this ticket.
     <% end %>
-  <% else %>
-    There are no comments for this ticket.
-  <% end %>
-</div>
+  </div>
