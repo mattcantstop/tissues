@@ -2,6 +2,8 @@
   <% if @ticket.comments.exists? %>
     <% @ticket.comments.each do |comment| %>
       <%= comment.user %><br>
+      State: <%= state_for(comment) %>
+      <%= simple_format(comment.text) %>
       <%= comment.text %><br>
     <% end %>
   <% else %>
