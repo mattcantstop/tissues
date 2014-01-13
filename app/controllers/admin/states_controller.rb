@@ -9,7 +9,7 @@ class Admin::StatesController < ApplicationController
   end
 
   def create
-    @state = State.new(params[:state])
+    @state = State.new(states_params)
     if @state.save
       flash[:notice] = "State has been created."
       redirect_to admin_states_path
@@ -22,7 +22,7 @@ class Admin::StatesController < ApplicationController
   private
 
   def states_params
-    
+    params.require(:state).permit(:name)
   end
 
 end
