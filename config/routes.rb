@@ -2,7 +2,13 @@ Tissues::Application.routes.draw do
 
   namespace :admin do
     root "base#index"
-    resources :states
+    resources :states do
+      member do
+        get :make_default
+      end
+    end
+  end
+
     resources :users do
       resources :permissions
       put "permissions", to: "permissions#set",
