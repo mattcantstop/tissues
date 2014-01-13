@@ -12,6 +12,6 @@ feature 'Creating states' do
     fill_in "Name", :with => "Duplicate"
     click_button "Create State"
     page.should have_content("State has been created.")
-  end 
+  end
 
 end
