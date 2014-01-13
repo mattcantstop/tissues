@@ -1,8 +1,10 @@
 require 'spec_helper'
 
 feature 'Creating states' do
+  let!(:admin_user) { FactoryGirl.create(:admin_user) }
+
   before do
-    sign_in_as!(Factory(:admin_user))
+    sign_in_as!(admin_user)
   end
 
   scenario "Creating a state" do
