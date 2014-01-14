@@ -1,5 +1,7 @@
 class Ticket < ActiveRecord::Base
 
+  attr_accessor :tag_names
+
   ###
   # Validations
   ###
