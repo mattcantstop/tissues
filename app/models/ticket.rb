@@ -1,6 +1,6 @@
 class Ticket < ActiveRecord::Base
 
-  attr_accessible :description, :title, :assets_attributes, :tag_names
+  attr_accessor :tag_names
 
   ###
   # Validations
@@ -16,9 +16,9 @@ class Ticket < ActiveRecord::Base
   belongs_to :state
   belongs_to :user
   has_many :assets
-  has_many :tags
   accepts_nested_attributes_for :assets
   has_many :comments
+  has_and_belongs_to_many :tags
 
 
 end
