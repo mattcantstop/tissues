@@ -24,6 +24,7 @@ class TicketsController < ApplicationController
   def create
     @ticket = @project.tickets.build(ticket_params)
     @ticket.user = current_user
+    @ticket.tag_names = params[:ticket][:tag_names]
     if @ticket.save
       flash[:notice] = "Ticket has been created."
       redirect_to [@project, @ticket]
