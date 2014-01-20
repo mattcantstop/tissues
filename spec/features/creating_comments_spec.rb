@@ -69,7 +69,7 @@ feature "Creating comments" do
 
   context "a user without permission to tag a ticket" do
     before do
-      sign_in(:user, user)
+      sign_in_as!(user)
     end
 
     it "cannot tag a ticket when creating a comment" do
