@@ -21,6 +21,9 @@
                           :selected => @ticket.state_id %>
     </p>
   <% end %>
+
+  <%= render "tags/form", :f => f %>
+
   </p>
   <%= f.submit %>
 <% end %>
