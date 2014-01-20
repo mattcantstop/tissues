@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
 
     @comment = @ticket.comments.build(comment_params)
     @comment.user = current_user
+binding.pry
     if @comment.save
       flash[:notice] = "Comment has been created."
       redirect_to [@ticket.project, @ticket]
