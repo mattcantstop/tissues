@@ -7,7 +7,12 @@ class CommentsController < ApplicationController
 
     @comment = @ticket.comments.build(comment_params)
     @comment.user = current_user
+    if cannot?(:tag, @ticket.project)
+      params[:comment].delete(:tag_names)
+    end
+
     @comment.tag_names = params[:comment][:tag_names]
+
     if @comment.save
       flash[:notice] = "Comment has been created."
       redirect_to [@ticket.project, @ticket]
