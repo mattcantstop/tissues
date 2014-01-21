@@ -8,6 +8,7 @@ feature "Creating comments" do
 
   before do
     define_permission!(user, "view", project)
+    define_permission!(user, "tag", project)
     state
     sign_in_as!(user)
     visit '/'
