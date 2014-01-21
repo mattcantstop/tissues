@@ -69,13 +69,10 @@ feature "Creating comments" do
   end
 
   context "a user without permission to tag a ticket" do
-    before do
-      sign_in_as!(user)
-    end
-
     it "cannot tag a ticket when creating a comment" do
+      click_link ticket.title
       fill_in "Text", :with => "Tag"
-      fill_in "Tag Names", :with => "one two"
+      fill_in "Tags", :with => "one two"
       click_button "Create Comment"
 
       ticket.reload
