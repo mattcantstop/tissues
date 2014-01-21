@@ -8,7 +8,6 @@ feature "Creating comments" do
 
   before do
     define_permission!(user, "view", project)
-    define_permission!(user, "tag", project)
     state
     sign_in_as!(user)
     visit '/'
@@ -55,6 +54,7 @@ feature "Creating comments" do
   end
 
   scenario "Adding a tag to a ticket" do
+    define_permission!(user, "tag", project)
     click_link ticket.title
     within("#ticket #tags") do
       page.should_not have_content("bug")
@@ -74,12 +74,10 @@ feature "Creating comments" do
     end
 
     it "cannot tag a ticket when creating a comment" do
-      post :create, { :comment => {
-        :text => "Tag!",
-        :tag_names => "one two"
-      },
-      :ticket_id => ticket.id
-      }
+      fill_in "Text", :with => "Tag"
+      fill_in "Tag Names", :with => "one two"
+      click_button "Create Comment"
+
       ticket.reload
       ticket.tags.should be_empty
     end
