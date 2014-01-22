@@ -19,6 +19,7 @@ describe TicketsController do
     before do
       sign_in(user)
       define_permission!(user, "view", project)
+      define_permission!(user, "tag", project)
     end
 
     def cannot_create_tickets!
@@ -60,6 +61,29 @@ describe TicketsController do
       expect(response).to redirect_to(project)
       message = "You cannot delete tickets from this project."
       expect(flash[:alert]).to eql(message)
+    end
+  end
+
+  context "when permissions do not permit tagging" do
+    before do
+      sign_in(user)
+      define_permission!(user, "view", project)
+    end
+
+    it "can create tickets, but not tag them" do
+      Permission.create(:user => user,
+                        :thing => project,
+                        :action => "create tickets")
+      ticket = Ticket.new({:title => "New ticket!",
+                           :description => "Brand spankin' new",
+                           :tag_names => "these are tags",
+                           :user_id => user.id,
+                           :project_id => project.id,
+                           :state_id => 1
+      })
+      request = post :create, ticket
+      puts request.body.inspect
+      expect(ticket.tags).to be_empty
     end
   end
 
