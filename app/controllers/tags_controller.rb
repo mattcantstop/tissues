@@ -6,7 +6,6 @@ class TagsController < ApplicationController
       @tag = Tag.find(params[:id])
       @ticket.tags -= [@tag]
       @ticket.save
-      render :nothing => true
     end
   end
 
