@@ -3,6 +3,10 @@ class Ticket < ActiveRecord::Base
   attr_accessor :tag_names
   before_create :associate_tags
 
+  searcher do
+    label :tag, :from => :tags, :field => :name
+  end
+
   ###
   # Validations
   ###
