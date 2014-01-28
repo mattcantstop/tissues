@@ -56,6 +56,7 @@ class TicketsController < ApplicationController
 
   def search
     @tickets = @project.tickets.search(params[:search])
+    render "projects/show"
   end
 
   private
