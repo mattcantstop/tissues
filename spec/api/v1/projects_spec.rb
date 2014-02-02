@@ -11,6 +11,11 @@ describe "/api/v1/projects", :type => :request do
   end
 
   context "projects viewable by this user" do
+
+    before do
+      FactoryGirl.create(:project, :name => "Access Denied")
+    end
+
     let(:url) { "/api/v1/projects" }
     it "json" do
       get "#{url}.json", :token => token

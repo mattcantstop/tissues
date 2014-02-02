@@ -29,8 +29,4 @@ class User < ActiveRecord::Base
     self.authentication_token = @token
   end
 
-  def valid_token?(token)
-    self.authentication_token == token
-  end
-
 end
