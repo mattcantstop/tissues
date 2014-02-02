@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "/api/v1/projects", :type => :api do
+describe "/api/v1/projects", :type => :request do
   let!(:admin_user) { FactoryGirl.create(:admin_user) }
   let!(:user) { FactoryGirl.create(:user) }
   let!(:token) { user.authentication_token }
