@@ -5,6 +5,12 @@ class User < ActiveRecord::Base
   has_many :tickets
 
   ###
+  # Callbacks
+  ###
+
+  before_save :ensure_authentication_token
+
+  ###
   # Validations
   ###
 
