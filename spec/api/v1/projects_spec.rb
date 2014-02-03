@@ -17,6 +17,7 @@ describe "/api/v1/projects", :type => :request do
     end
 
     let(:url) { "/api/v1/projects" }
+
     it "json" do
       get "#{url}.json", :token => token
       projects_json = Project.for(user).all.to_json
@@ -30,5 +31,13 @@ describe "/api/v1/projects", :type => :request do
         p["name"] == "Access Denied"
       end.should be_false
     end
+
+    it "XML" do
+      get "#{url}.xml", :token => token
+      last_response.body.should eql(Project.for(user).to_xml)
+      projects = Nokogiri::XML(last_response.body)
+      projects.css("project name").text.should eql(project.name)
+    end
+
   end
 end
