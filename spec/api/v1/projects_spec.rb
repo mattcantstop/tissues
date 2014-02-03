@@ -56,5 +56,16 @@ describe "/api/v1/projects", :type => :request do
         last_response.headers["Location"].should eql(route)
         last_response.body.should eql(project.to_json)
     end
+
+    it "unsuccessful JSON" do
+      post "#{url}.json", :token => token,
+        :project => {:name => nil}
+      last_response.status.should eql(422)
+      errors = {"errors" => {
+        "name" => ["can't be blank"]
+      }}.to_json
+      last_response.body.should eql(errors)
+    end
+
   end
 end
