@@ -1,9 +1,9 @@
 require "spec_helper"
 
-describe "Project API errors", :type => :api do
+describe "Project API errors", :type => :request do
 
   context "standard users" do
-    let(:user) { Factory(:user) }
+    let(:user) { FactoryGirl.create(:user) }
 
     it "cannot create projects" do
       post "/api/v1/projects.json",
