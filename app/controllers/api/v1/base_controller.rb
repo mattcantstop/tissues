@@ -9,7 +9,7 @@ class Api::V1::BaseController < ActionController::Base
   def authenticate_user
     @current_user = User.find_by_authentication_token(params[:token])
     unless @current_user
-      respond_with({:error => "Token is invalid." })
+      respond_with({:error => "Token is invalid." }, :location => nil)
     end
   end
 

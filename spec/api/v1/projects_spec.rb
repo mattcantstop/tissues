@@ -55,6 +55,8 @@ describe "/api/v1/projects", :type => :request do
         :project => {
         :name => "Inspector"
       }
+puts last_response
+puts last_response.body
         project = Project.find_by_name!("Inspector")
         route = "/api/v1/projects/#{project.id}"
         last_response.status.should eql(201)
@@ -64,7 +66,7 @@ describe "/api/v1/projects", :type => :request do
 
     it "unsuccessful JSON" do
       post "#{url}.json", :token => token,
-        :project => {:name => nil}
+        :project => {}
       last_response.status.should eql(422)
       errors = {"errors" => {
         "name" => ["can't be blank"]
