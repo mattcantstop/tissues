@@ -20,7 +20,7 @@ describe "/api/v1/projects", :type => :request do
 
     it "json" do
       get "#{url}.json", :token => token
-      projects_json = Project.for(user).all.to_json
+      projects_json = Project.for(user).to_json
       last_response.body.should eql(projects_json)
       last_response.status.should eql(200)
       projects = JSON.parse(last_response.body)
@@ -43,7 +43,12 @@ describe "/api/v1/projects", :type => :request do
 
   context "creating a project" do
 
-    let(:url) { "/api/v1/projects" } 
+    before do
+      user.admin = true
+      user.save
+    end
+
+    let(:url) { "/api/v1/projects" }
 
     it "successful JSON" do
       post "#{url}.json", :token => token,
