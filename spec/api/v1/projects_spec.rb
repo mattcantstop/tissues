@@ -84,7 +84,7 @@ describe "/api/v1/projects", :type => :request do
 
     it "JSON" do
       get "#{url}.json", :token => token
-      project_json = @project.to_json(:methods => "last_ticket")
+      project_json = project.to_json(:methods => "last_ticket")
       last_response.body.should eql(project_json)
       last_response.status.should eql(200)
       project_response = JSON.parse(last_response.body)

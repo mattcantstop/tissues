@@ -30,5 +30,8 @@ class Project < ActiveRecord::Base
   # Instance Methods
   ###
 
+  def last_ticket
+    tickets.last
+  end
 
 end
