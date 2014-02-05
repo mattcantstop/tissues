@@ -55,8 +55,6 @@ describe "/api/v1/projects", :type => :request do
         :project => {
         :name => "Inspector"
       }
-puts last_response
-puts last_response.body
         project = Project.find_by_name!("Inspector")
         route = "/api/v1/projects/#{project.id}"
         last_response.status.should eql(201)
@@ -75,4 +73,24 @@ puts last_response.body
     end
 
   end
+
+  context "show" do
+
+    let(:url) { "/api/v1/projects/#{project.id}"}
+
+    before do
+      FactoryGirl.create(:ticket, :project => project)
+    end
+
+    it "JSON" do
+      get "#{url}.json", :token => token
+      project_json = @project.to_json(:methods => "last_ticket")
+      last_response.body.should eql(project_json)
+      last_response.status.should eql(200)
+      project_response = JSON.parse(last_response.body)
+      ticket_title = project_response["last_ticket"]["title"]
+      ticket_title.should_not be_blank
+    end
+  end
+
 end
