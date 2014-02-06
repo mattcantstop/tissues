@@ -24,6 +24,11 @@ class Api::V1::ProjectsController < Api::V1::BaseController
     respond_with(@project)
   end
 
+  def destroy
+    @project.delete
+    respond_with(@project)
+  end
+
   private
 
   def project_params

@@ -128,4 +128,24 @@ describe "/api/v1/projects", :type => :request do
     end
   end
 
+  context "deleting a ticket" do
+
+    let(:project) { FactoryGirl.create(:project, name: "To Be Deleted") }
+    let(:url) { "/api/v1/projects/#{project.id}" }
+
+    before do
+      user.admin = true
+      user.save
+    end
+
+    it "should delete a project" do
+      delete "#{url}.json", token: token
+
+      last_response.status.should eql(204)
+    end
+  end
+
+
+
+
 end
