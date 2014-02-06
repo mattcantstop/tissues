@@ -95,24 +95,36 @@ describe "/api/v1/projects", :type => :request do
 
   context "updating a project" do
 
+    let(:url) { "/api/v1/projects/#{project.id}" }
+    let(:project)  { FactoryGirl.create(:project, name: "A Sampled Project") }
+
     before do
       user.admin = true
       user.save
     end
 
-    let(:url) { "/api/v1/projects/#{project.id}" }
-    let(:project)  { FactoryGirl.create(:project, name: "A Sampled Project") }
 
     it "successful JSON" do
       put "#{url}.json", :token => token,
-      :project => {
+        :project => {
         :name => "A Sampled Project"
       }
 
-      last_response.status.should eql(204)
-      last_response.body.should eql("")
-      project.reload
-      project.name.should eql("A Sampled Project")
+        last_response.status.should eql(204)
+        last_response.body.should eql("")
+        project.reload
+        project.name.should eql("A Sampled Project")
+    end
+
+    it "unsuccessful JSON" do
+      put "#{url}.json", :token => token,
+        :project => {
+        :name => ""
+      }
+
+      last_response.status.should eql(422)
+      errors = { :errors => { :name => ["can't be blank"] } }
+      last_response.body.should eql(errors.to_json)
     end
   end
 
