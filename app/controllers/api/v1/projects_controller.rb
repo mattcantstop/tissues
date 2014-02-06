@@ -1,6 +1,6 @@
 class Api::V1::ProjectsController < Api::V1::BaseController
 
-  before_filter :find_project, :only => [:show, :update]
+  before_filter :find_project, :only => [:show, :update, :destroy]
 
   def show
     respond_with(@project, :methods => "last_ticket")
