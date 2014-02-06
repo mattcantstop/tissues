@@ -20,7 +20,8 @@ class Api::V1::ProjectsController < Api::V1::BaseController
   end
 
   def update
-    @project
+    @project.update_attributes(project_params)
+    respond_with(@project)
   end
 
   private

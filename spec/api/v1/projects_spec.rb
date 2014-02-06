@@ -106,13 +106,13 @@ describe "/api/v1/projects", :type => :request do
     it "successful JSON" do
       put "#{url}.json", :token => token,
       :project => {
-        :name => "Not Ticketee"
+        :name => "A Sampled Project"
       }
 
       last_response.status.should eql(204)
       last_response.body.should eql("")
       project.reload
-      project.name.should eql("Not Ticketee")
+      project.name.should eql("A Sampled Project")
     end
   end
 
