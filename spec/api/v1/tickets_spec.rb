@@ -1,8 +1,7 @@
 require 'spec_helper'
 
 describe "/api/v1/tickets", :type => :request do
-  let!(:project) { FactoryGirl.create(:project, :name => "Ticketee") }
-  let!(:user)    { FactoryGirl.create(:user) }
+  let!(:user)  { FactoryGirl.create(:user) }
 
   before do
     user.permissions.create!(:action => "view",
@@ -18,6 +17,7 @@ describe "/api/v1/tickets", :type => :request do
       end
     end
 
+    let!(:project) { FactoryGirl.create(:project, :name => "Ticketee") }
     let(:url) { "/api/v1/projects/#{project.id}/tickets" }
 
     it "XML" do
