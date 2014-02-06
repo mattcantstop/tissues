@@ -18,6 +18,7 @@ describe "/api/v1/tickets", :type => :request do
     end
 
     let!(:project) { FactoryGirl.create(:project, :name => "Ticketee") }
+binding.pry
     let(:url) { "/api/v1/projects/#{project.id}/tickets" }
 
     it "XML" do
