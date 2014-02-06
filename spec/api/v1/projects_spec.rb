@@ -93,4 +93,27 @@ describe "/api/v1/projects", :type => :request do
     end
   end
 
+  context "updating a project" do
+
+    before do
+      user.admin = true
+      user.save
+    end
+
+    let(:url) { "/api/v1/projects/#{project.id}" }
+    let(:project)  { FactoryGirl.create(:project, name: "A Sampled Project") }
+
+    it "successful JSON" do
+      put "#{url}.json", :token => token,
+      :project => {
+        :name => "Not Ticketee"
+      }
+
+      last_response.status.should eql(204)
+      last_response.body.should eql("")
+      project.reload
+      project.name.should eql("Not Ticketee")
+    end
+  end
+
 end
