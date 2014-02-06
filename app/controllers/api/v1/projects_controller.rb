@@ -1,6 +1,6 @@
 class Api::V1::ProjectsController < Api::V1::BaseController
 
-  before_filter :find_project, :only => [:show]
+  before_filter :find_project, :only => [:show, :update]
 
   def show
     respond_with(@project, :methods => "last_ticket")
@@ -17,6 +17,10 @@ class Api::V1::ProjectsController < Api::V1::BaseController
     else
       respond_with(project)
     end
+  end
+
+  def update
+    @project
   end
 
   private
