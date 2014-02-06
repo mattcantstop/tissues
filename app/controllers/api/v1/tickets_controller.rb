@@ -1,5 +1,7 @@
 class Api::V1::TicketsController < Api::V1::BaseController
 
+  before_filter :set_project
+
   def index
     @tickets = @project.tickets.for(current_user)
     respond_with(@tickets)
